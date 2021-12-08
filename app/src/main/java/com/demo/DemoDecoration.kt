@@ -64,17 +64,13 @@ class DemoDecoration(context: Context, left: Float, top: Float, right: Float, bo
         val spanCount = getSpanCount(parent)
         val space = 0f.coerceAtLeast(((top + bottom).toFloat() - dividerHeight) / 2)
         var i = 0
-        while (i < childCount) {
+        if (i < childCount) {
             val view = parent.getChildAt(i)
             val position = parent.getChildAdapterPosition(view)
             if (position / spanCount % 2 == 0) {
-                canvas.drawRect(
-                    dividerPaddingLeft,
-                    view.bottom + space,
-                    parent.right - dividerPaddingRight,
-                    view.bottom + space + dividerHeight,
-                    dividerPaint
-                )
+                canvas.drawRect(dividerPaddingLeft, view.bottom + space,
+                    parent.right - dividerPaddingRight, view.bottom + space + dividerHeight,
+                    dividerPaint)
             }
             i += spanCount
         }
